@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<br lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>토스 전구 텍스쳐 깜빡임 밝은 흰색</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3182F7;
+    font-family: 'Noto Sans KR', Arial, sans-serif;
+    color: white;
+  }
+
+  .loader-container {
+    text-align: center;
+  }
+
+  .toss-logo {
+    font-weight: 900;
+    font-size: 100px;
+    letter-spacing: 0.05em;
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', Arial, sans-serif;
+    user-select: none;
+    color: #fff;
+    /* 은은한 전구 빛 효과 */
+    text-shadow:
+      0 0 5px rgba(255,255,255,0.6),
+      0 0 10px rgba(255,255,255,0.5),
+      0 0 15px rgba(255,255,255,0.4);
+    animation: glowBlink 2s infinite alternate;
+  }
+
+  @keyframes glowBlink {
+    0% {
+      opacity: 1;
+      text-shadow:
+        0 0 8px rgba(255,255,255,0.9),
+        0 0 15px rgba(255,255,255,0.8),
+        0 0 20px rgba(255,255,255,0.7);
+    }
+    50% {
+      opacity: 0.4;
+      text-shadow:
+        0 0 2px rgba(255,255,255,0.3),
+        0 0 5px rgba(255,255,255,0.2),
+        0 0 8px rgba(255,255,255,0.1);
+    }
+    100% {
+      opacity: 1;
+      text-shadow:
+        0 0 8px rgba(255,255,255,0.9),
+        0 0 15px rgba(255,255,255,0.8),
+        0 0 20px rgba(255,255,255,0.7);
+    }
+  }
+
+  h2 {
+    color: white;
+    margin-top: 0;
+    transition: opacity 0.5s;
+    font-weight: normal;
+  }
+</style>
+</head>
+
+<body>
+  <div class="loader-container">
+    <div class="toss-logo">toss</div>
+    <h2 id="loading-text">서버가 열심히 땀 흘리는 중 💦</h2>
+  </div>
+
+  <script>
+    const messages = [
+    "잠시, 자산이 조용히 숨을 고르고 있습니다.",
+    "거래가 서서히 준비 중입니다. 조금만 기다려 주세요.",
+    "잔고가 천천히 눈을 뜨고 있습니다.👀",
+    "시스템이 잠시 휴식을 취하고 있습니다.",
+    "금융 마법이 조심스럽게 완성되고 있습니다.✨",
+    "데이터가 조용히 자리를 잡고 있습니다.",
+    "서버가 여유를 즐기며 준비 중입니다☕.",
+    "거래가 조용히 자리를 잡고 있습니다.",
+    ];
+
+    let index = 0;
+    const textElement = document.getElementById("loading-text");
+
+    setInterval(() => {
+      index = (index + 1) % messages.length;
+      textElement.style.opacity = 0;
+
+      setTimeout(() => {
+        textElement.textContent = messages[index];
+        textElement.style.opacity = 1;
+      }, 300);
+    }, 3000);
+  </script>
+</body>
+</html>
