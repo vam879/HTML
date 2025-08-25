@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>원두 주문서</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            background-color: #ffffff; 
+            color: #1e3a8a; 
+            margin: 30px 0;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff; 
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 36px;
+            color: #1e3a8a;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .coffee-bean {
+            font-size: 32px;
+        }
+
+        fieldset {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #1e3a8a;
+            border-radius: 8px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 26px;
+            color: #1e3a8a;
+            padding: 0 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+            clear: both;
+        }
+
+        .title {
+            font-weight: 600;
+            width: 120px;
+            float: left;
+            color: #1e3a8a;
+            line-height: 28px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        textarea,
+        input[type="number"] {
+            border: 1.5px solid #93c5fd; 
+            border-radius: 5px;
+            padding: 8px 10px;
+            width: 280px;
+            font-size: 15px;
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            transition: border-color 0.3s ease;
+            color: #1e3a8a;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        input[type="number"]:focus {
+            border-color: #3b82f6; 
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        label > input[type="checkbox"] {
+            margin-right: 8px;
+            transform: scale(1.2);
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        label > input[type="number"] {
+            width: 60px;
+            margin-left: 10px;
+            vertical-align: middle;
+            color: #1e3a8a;
+        }
+
+        .ordercenter {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #3b82f6;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            input[type="text"],
+            input[type="tel"],
+            textarea,
+            input[type="number"] {
+                width: 100%;
+            }
+            .title {
+                width: 100%;
+                float: none;
+                margin-bottom: 6px;
+            }
+            li {
+                margin-bottom: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            원두 주문서
+            <span class="coffee-bean" title="커피콩"></span>
+        </h1>
+
+        <form action="" method="post">
+            <fieldset>
+                <legend>개인정보</legend>
+                <ul>
+                    <li>
+                        <label for="uname" class="title">이름</label>
+                        <input type="text" id="uname" name="uname" required placeholder="예) 홍길동" />
+                    </li>
+                    <li>
+                        <label for="tell" class="title">연락처</label>
+                        <input type="tel" id="tell" name="tell" required placeholder="연락 가능한 번호를 입력해주세요" />
+                    </li>
+                </ul>
+            </fieldset>
+
+            <fieldset>
+                <legend>배송지 정보</legend>
+                <ul>
+                    <li>
+                        <label for="addr" class="title">주소</label>
+                        <input type="text" id="addr" name="addr" required placeholder="배송받으실 주소를 입력해주세요" />
+                    </li>
+                    <li>
+                        <label for="phone" class="title">전화번호</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="연락처를 입력해주세요" />
+                    </li>
+                    <li>
+                        <label for="memo" class="title">메모</label>
+                        <textarea id="memo" name="memo" rows="3" cols="25" placeholder="배송 시 참고사항을 입력해주세요"></textarea>
+                    </li>
+                </ul>
+            </fieldset>
+
+            <fieldset>
+                <legend>주문정보</legend>
+                <ul>
+                    <li>
+                        <label><input type="checkbox" name="product" value="guatemala" id="guatemala" /> 과테말라 안티구아 (100g)</label>
+                        <label><input type="number" name="qty_guatemala" id="qty_guatemala" max="10" min="1" value="0" disabled />개</label>
+                    </li>
+                    <li>
+                        <label><input type="checkbox" name="product" value="mandeling" id="mandeling" /> 인도네시아 만델링 (100g)</label>
+                        <label><input type="number" name="qty_mandeling" id="qty_mandeling" max="10" min="1" value="0" disabled />개</label>
+                    </li>
+                    <li>
+                        <label><input type="checkbox" name="product" value="vinacafe" id="vinacafe" /> Vinacafe(비나카페) (100g)</label>
+                        <label><input type="number" name="qty_vinacafe" id="qty_vinacafe" max="10" min="1" value="0" disabled />개</label>
+                    </li>
+                </ul>
+            </fieldset>
+
+            <div class="ordercenter">
+                <input type="submit" value="따뜻한 커피 주문하기" />
+                <input type="reset" value="처음부터 다시" />
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // 체크박스 선택 시 수량 입력창 활성화 제어
+        const products = [
+            { checkboxId: 'guatemala', qtyId: 'qty_guatemala' },
+            { checkboxId: 'mandeling', qtyId: 'qty_mandeling' },
+            { checkboxId: 'vinacafe', qtyId: 'qty_vinacafe' },
+        ];
+
+        products.forEach(p => {
+            const checkbox = document.getElementById(p.checkboxId);
+            const qtyInput = document.getElementById(p.qtyId);
+
+            checkbox.addEventListener('change', () => {
+                qtyInput.disabled = !checkbox.checked;
+                if (!checkbox.checked) {
+                    qtyInput.value = 0;
+                } else if (qtyInput.value == 0) {
+                    qtyInput.value = 1;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
